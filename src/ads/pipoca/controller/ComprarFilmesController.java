@@ -28,7 +28,7 @@ public class ComprarFilmesController extends HttpServlet {
 		FilmeService fService = new FilmeService();
 		String saida = "index.jsp";
 		HttpSession session = request.getSession();
-		TreeSet<Filme> carrinho = null;
+		TreeSet<Filme> entrada = null;
 		ArrayList<Integer> lista = null;
 		
 		switch(acao) {
@@ -38,14 +38,14 @@ public class ComprarFilmesController extends HttpServlet {
 			//pegar o carrinho da sessão e ver se já tem filmes
 			Object aux = session.getAttribute("filmes");
 			if(aux != null && aux instanceof TreeSet<?>) {
-				carrinho = (TreeSet<Filme>)aux;
+				entrada = (TreeSet<Filme>)aux;
 			} else {
-				carrinho = new TreeSet<>();
+				entrada = new TreeSet<>();
 			}
 			for(Filme f:filmes) {
-				carrinho.add(f);
+				entrada.add(f);
 			}
-			session.setAttribute("filmes", carrinho);
+			session.setAttribute("filmes", entrada);
 			saida = "Carrinho.jsp";
 			break;
 		case "menu-comprar-filmes-de-menu-jsp":
@@ -58,12 +58,13 @@ public class ComprarFilmesController extends HttpServlet {
 			//pegar o carrinho da sessão e ver se já tem filmes
 			aux = session.getAttribute("filmes");
 			if(aux != null && aux instanceof TreeSet<?>) {
-				carrinho = (TreeSet<Filme>)aux;
+				entrada = (TreeSet<Filme>)aux;
 				for(int id:lista) {
 					Filme filme = new Filme();
 					filme.setId(id);
-					carrinho.remove(filme);
+					entrada.remove(filme);
 				}
+		 
 			}
 		}
 		
