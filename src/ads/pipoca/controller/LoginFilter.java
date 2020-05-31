@@ -28,8 +28,8 @@ public class LoginFilter implements Filter{
 		Usuario logado = (Usuario)session.getAttribute("logado");
 		String path = req.getContextPath();
 		String uri = req.getRequestURI();
-		System.out.println("filter: path: "+path);
-		System.out.println("filter: uri: "+uri);
+		//System.out.println("filter: path: "+path);
+		//System.out.println("filter: uri: "+uri);
 		String acao = req.getParameter("acao");
 		if (acao == null) {
 			acao = "";
@@ -37,7 +37,7 @@ public class LoginFilter implements Filter{
 		
 		if (logado != null || 
 				uri.equals(path+"/Login.jsp") ||
-				acao.equals("btn-login-de-login-jsp") ||
+				acao.equals("login") ||
 				uri.endsWith(".js") ||
 				uri.endsWith(".css") ||
 				uri.contains("fonts")) {
