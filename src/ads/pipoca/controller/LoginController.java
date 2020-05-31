@@ -24,7 +24,13 @@ public class LoginController extends HttpServlet {
 		UsuarioService service = new UsuarioService();
 		HttpSession session = request.getSession();
 		String saida = "Login.jsp";
+		String acao = request.getParameter("acao");
 		
+		switch(acao) {
+		case "login":
+			
+			break;
+		}
 		if (service.validar(usuario)) {
 			session.setAttribute("logado", usuario);
 			saida = "index.jsp";
