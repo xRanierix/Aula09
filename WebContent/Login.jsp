@@ -35,7 +35,7 @@
 				</div>
 				</div>
 				<div class="row col-md-12">
-					<button type="submit" class="btn btn-primary" name="acao" value="btn-login-de-login-jsp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Ok</button>
+					<button type="submit" class="btn btn-primary" name="acao" value="login"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Ok</button>
 				</div>
 			</form>    
 			</div>
