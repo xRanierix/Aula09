@@ -28,13 +28,15 @@ public class LoginController extends HttpServlet {
 		
 		switch(acao) {
 		case "login":
-			
+			if (service.validar(usuario)) {
+				session.setAttribute("logado", usuario);
+				saida = "index.jsp";
+			} 
 			break;
+		case "logout":
+			session.invalidate();
 		}
-		if (service.validar(usuario)) {
-			session.setAttribute("logado", usuario);
-			saida = "index.jsp";
-		} 
+		
 		RequestDispatcher view = request.getRequestDispatcher(saida);
 		view.forward(request, response);
 	}
